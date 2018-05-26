@@ -1,0 +1,109 @@
+<form novalidate [formGroup]="myform">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h2>Register New User</h2>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="name">Name</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem">
+                        <i class="fa fa-user"></i>
+                    </div>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="John Doe" required autofocus [(ngModel)]="name" formControlName="Formname">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" *ngIf="myform.controls.Formname.invalid&&(myform.controls.Formname.dirty || myform.controls.Formname.touched)" >
+            <div class="form-control-feedback">
+                <span class="text-danger align-middle">
+                  invalid name
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="email">E-Mail Address</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem">
+                        <i class="fa fa-at"></i>
+                    </div>
+                    <input type="text" name="email" class="form-control" id="email" placeholder="you@example.com" required autofocus [(ngModel)]="email" formControlName="Formemail">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3"*ngIf="myform.controls.Formemail.invalid&&(myform.controls.Formemail.dirty || myform.controls.Formemail.touched)" >
+            <div class="form-control-feedback">
+                <span class="text-danger align-middle">
+                   invalide email
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="password">Password</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group has-danger">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem">
+                        <i class="fa fa-key"></i>
+                    </div>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="Password" required [(ngModel)]="password" formControlName="Formpassword">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" *ngIf="myform.controls.Formemail.invalid&&(myform.controls.Formpassword.dirty || myform.controls.Formpassword.touched)" >
+            <div class="form-control-feedback">
+                <span class="text-danger align-middle">
+                    <i class="fa fa-close"> invalide password</i>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 field-label-responsive">
+            <label for="password">Confirm Password</label>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                    <div class="input-group-addon" style="width: 2.6rem">
+                        <i class="fa fa-repeat"></i>
+                    </div>
+                    <input type="password" name="password-confirmation" class="form-control" id="password-confirm" placeholder="Password" required
+                        [(ngModel)]="confirmpassword" formControlName="Formconfirmpassword">
+                </div>
+                <i class="text-danger align-middle" *ngIf="password!=confirmpassword">  confirm password mismatch</i>
+            </div>
+        </div>
+        <div class="col-md-3" *ngIf="myform.controls.Formconfirmpassword.invalid&&(myform.controls.Formconfirmpassword.dirty || myform.controls.Formconfirmpassword.touched)">
+                <div class="form-control-feedback">
+                    <span class="text-danger align-middle">
+                        <i class="fa fa-close"> invalide  confirm password</i>
+                        
+                    </span>
+                </div>
+                
+            </div>
+          
+    </div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <button (click)="register()" type="submit" [disabled]="myform.invalid||password!=confirmpassword" class="btn btn-success">
+                <i class="fa fa-user-plus"></i> Register</button>
+        </div>
+    </div>
+</form>
